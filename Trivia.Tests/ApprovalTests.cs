@@ -1,4 +1,4 @@
-﻿namespace Trivia.Tests;
+namespace Trivia.Tests;
 
 using global::ApprovalTests;
 using global::ApprovalTests.Namers;
@@ -19,7 +19,7 @@ public class ApprovalTests
             // 2) Manually rename the *.received. file to *.approved.
             // 3) Re-run the test: now it will pass
 
-            var names = new[] {"Llewellyn", "James", "Dan", "Jason", "Katrina"};
+            var names = new[] { "Llewellyn", "James", "Dan", "Jason", "Katrina" };
             Array.Sort(names);
             Approvals.VerifyAll(names, label: "");
         }
@@ -33,7 +33,7 @@ public class ApprovalTests
             // 2) Move to the destination (usually on the right) the whole output presented (usually in the left)
             // 3) Re-run the test: now it will pass
 
-            var names = new[] {"Llewellyn", "James", "Dan", "Jason", "Katrina"};
+            var names = new[] { "Llewellyn", "James", "Dan", "Jason", "Katrina" };
             Array.Sort(names);
             Approvals.VerifyAll(names, label: "");
         }
@@ -50,11 +50,12 @@ public class ApprovalTests
             // 3) Run it to rename the *.received. file to *.approved.
             // 4) Re-run the test: now it will pass
 
-            var names = new[] {"Llewellyn", "James", "Dan", "Jason", "Katrina"};
+            var names = new[] { "Llewellyn", "James", "Dan", "Jason", "Katrina" };
             Array.Sort(names);
             Approvals.VerifyAll(names, label: "");
         }
 
+        [Ignore("Il test non compila x compatibilità OS")]
         [UseReporter(typeof(FileLauncherReporter))]
         [Test]
         public void TestListWithFileLauncherReporter()
@@ -66,7 +67,7 @@ public class ApprovalTests
             // 2) Save the file renaming it from *.received. to *.approved.
             // 3) Re-run the test: now it will pass
 
-            var names = new[] {"Llewellyn", "James", "Dan", "Jason", "Katrina"};
+            var names = new[] { "Llewellyn", "James", "Dan", "Jason", "Katrina" };
             Array.Sort(names);
             Approvals.VerifyAll(names, label: "");
         }

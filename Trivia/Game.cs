@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,12 +47,10 @@ namespace UglyTrivia
 
         public bool add(String playerName)
         {
-
-
             players.Add(playerName);
-            places[howManyPlayers()] = 0;
-            purses[howManyPlayers()] = 0;
-            inPenaltyBox[howManyPlayers()] = false;
+            places[howManyPlayers()-1] = 0;
+            purses[howManyPlayers()-1] = 0;
+            inPenaltyBox[howManyPlayers()-1] = false;
 
             Console.WriteLine(playerName + " was added");
             Console.WriteLine("They are player number " + players.Count);
@@ -66,6 +64,12 @@ namespace UglyTrivia
 
         public void roll(int roll)
         {
+            if (players.Count == 1)
+            {
+                Console.WriteLine("Non si può giocare da soli");
+                return;
+            }
+
             Console.WriteLine(players[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
