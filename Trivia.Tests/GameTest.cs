@@ -2,7 +2,7 @@ namespace Trivia.Tests;
 
 using UglyTrivia;
 
-public class Tests
+public class GameTests
 {
     [SetUp]
     public void Setup()
