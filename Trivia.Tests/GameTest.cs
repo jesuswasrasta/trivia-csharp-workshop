@@ -26,4 +26,10 @@ public class GameTests
         Assert.IsTrue(result);
     }
 
+
+    /* Potremmo iniziare a testare Game, ad es. il comportamento del metodo add()
+     * Dovremmo però sapere qual è l'obiettivo finale: correggere bug? Implementare funzionalità?
+     * la copertura di test per ora è parziale
+     *
+     */
 }
