@@ -18,7 +18,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <TargetFrameworks>net6.0;net6.0-windows;net7.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net6.0;net6.0-windows;netcoreapp3.1</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>
