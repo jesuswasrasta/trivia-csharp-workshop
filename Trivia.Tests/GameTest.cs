@@ -64,24 +64,6 @@ They are player number 6
         Assert.That(actual, Is.EqualTo(expeted));
     }
 
-    [Test(Description = "Verifico che si possa giocare da soli")]
-    public void GiocatoreUnico() {
-        var game = new Game();
-        var stringWriter = new StringWriter();
-        Console.SetOut(stringWriter);
-        game.add("Giocatore1");
-        game.roll(5);
-        var expeted = @"Giocatore1 was added
-They are player number 1
-Giocatore1 is the current player
-They have rolled a 5
-Giocatore1's new location is 5
-The category is Science
-Science Question 0";
-        var actual = stringWriter.ToString();
-        Assert.That(actual, Is.EqualTo(expeted));
-    }
-
     [Test(Description = "Mi aspetto che il numero minimo di giocatori sia 2 (implementando un nuovo comportamento)")]
     public void AlmenoDueGiocatori()
     {
