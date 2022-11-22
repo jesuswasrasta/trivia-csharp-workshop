@@ -6,7 +6,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <TargetFrameworks>net6.0;net6.0-windows;netcoreapp3.1</TargetFrameworks>
+        <TargetFrameworks>net6.0;net6.0-windows</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
