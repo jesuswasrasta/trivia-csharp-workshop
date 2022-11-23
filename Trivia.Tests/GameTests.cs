@@ -89,4 +89,34 @@ Science Question 0
 
         Assert.AreEqual(actual, expected);
     }
+
+    [Test(Description = "Posso aggiungere massimo 6 giocatori")]
+    public void PossoAggiungereMax6Giocatori()
+    {
+        var game = new Game();
+        var expected = 6;
+
+        for (int i = 1; i <= expected; i++)
+        {
+            game.add($"player {i}");
+        }
+
+        Assert.That(game.howManyPlayers(), Is.EqualTo(expected));
+    }
+
+    [Test(Description = "Al settimo giocatore ricevo un messaggio di errore")]
+    public void AlSettimoGiocatoreErrore()
+    {
+        var game = new Game();
+        var expected = 6;
+
+        for (int i = 1; i <= expected; i++)
+        {
+            game.add($"player {i}");
+        }
+
+        Assert.Throws<IndexOutOfRangeException>(() => game.add("player 7"));
+
+    }
+
 }
