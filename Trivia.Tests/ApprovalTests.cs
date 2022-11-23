@@ -1,4 +1,4 @@
-﻿using global::ApprovalTests;
+using global::ApprovalTests;
 using global::ApprovalTests.Namers;
 using global::ApprovalTests.Reporters;
 using NUnit.Framework;
@@ -71,21 +71,21 @@ public class ApprovalTests
             Approvals.VerifyAll(names, label: "");
         }
 
-        [UseReporter(typeof(FileLauncherReporter))]
-        [Test]
-        public void TestListWithFileLauncherReporter()
-        {
-            // The FileLauncherReporter opens `*.received` file into default text editor.
-            //
-            // Directions:
-            // 1) Run the test; it will fail, opening your default text editor
-            // 2) Save the file renaming it from *.received. to *.approved.
-            // 3) Re-run the test: now it will pass
+        //[UseReporter(typeof(FileLauncherReporter))]
+        //[Test]
+        //public void TestListWithFileLauncherReporter()
+        //{
+        //    // The FileLauncherReporter opens `*.received` file into default text editor.
+        //    //
+        //    // Directions:
+        //    // 1) Run the test; it will fail, opening your default text editor
+        //    // 2) Save the file renaming it from *.received. to *.approved.
+        //    // 3) Re-run the test: now it will pass
 
-            var names = new[] {"Llewellyn", "James", "Dan", "Jason", "Katrina"};
-            Array.Sort(names);
-            Approvals.VerifyAll(names, label: "");
-        }
+        //    var names = new[] {"Llewellyn", "James", "Dan", "Jason", "Katrina"};
+        //    Array.Sort(names);
+        //    Approvals.VerifyAll(names, label: "");
+        //}
 
         /* There are of course other Reporters and other ways to use this library to perform snapshot testing.
          *
