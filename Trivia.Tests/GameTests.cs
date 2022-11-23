@@ -42,14 +42,37 @@ public class GameTests
         Assert.That(actual, Is.EqualTo(expected));
     }
 
-    [Test(Description = "add aggiunge due giocatori e poi ritorna true")]
-    public void GiocaConUnGiocatore()
+
+    [Test(Description = "Non giocare con un giocatore")]
+    public void NonGiocareConUnGiocatore()
     {
         var stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
 
         var expected = @"Pippo was added
 They are player number 1
+Devi giocare con almeno due giocatori
+";
+        var game = new Game();
+        game.add("Pippo");
+
+        game.roll(1);
+
+        var actual = stringWriter.ToString();
+
+        Assert.AreEqual(actual, expected);
+    }
+
+    [Test(Description = "Giocare con due giocatori")]
+    public void GiocoConDueGiocatori()
+    {
+        var stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+
+        var expected = @"Pippo was added
+They are player number 1
+Pluto was added
+They are player number 2
 Pippo is the current player
 They have rolled a 1
 Pippo's new location is 1
@@ -58,9 +81,10 @@ Science Question 0
 ";
         var game = new Game();
         game.add("Pippo");
+        game.add("Pluto");
 
         game.roll(1);
-        
+
         var actual = stringWriter.ToString();
 
         Assert.AreEqual(actual, expected);

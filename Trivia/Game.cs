@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,6 +66,13 @@ namespace UglyTrivia
 
         public void roll(int roll)
         {
+            if (howManyPlayers() < 2)
+            {
+                Console.WriteLine("Devi giocare con almeno due giocatori");
+                return;
+
+            }
+
             Console.WriteLine(players[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
