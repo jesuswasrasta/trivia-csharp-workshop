@@ -1,6 +1,8 @@
+using UglyTrivia;
+
 namespace Trivia.Tests;
 
-using UglyTrivia;
+using NUnit.Framework;
 
 public class GameTests
 {

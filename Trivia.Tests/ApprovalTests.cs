@@ -1,8 +1,10 @@
-﻿namespace Trivia.Tests;
-
-using global::ApprovalTests;
+﻿using global::ApprovalTests;
 using global::ApprovalTests.Namers;
 using global::ApprovalTests.Reporters;
+using NUnit.Framework;
+using UglyTrivia;
+
+namespace Trivia.Tests;
 
 public class ApprovalTests
 {

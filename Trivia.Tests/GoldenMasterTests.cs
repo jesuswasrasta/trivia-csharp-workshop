@@ -1,5 +1,6 @@
 ﻿namespace Trivia.Tests;
 
+using NUnit.Framework;
 using UglyTrivia;
 
 public class GoldenMasterTests
