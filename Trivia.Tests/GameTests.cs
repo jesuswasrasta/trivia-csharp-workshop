@@ -52,4 +52,14 @@ public class GameTests
 
         Assert.Pass();
     }
+
+    [Test(Description = "Ci Devono Essere Almeno 2 Giocatori")]
+    public void CiDevonoEssereAlmeno2Giocatori()
+    {
+        var game = new Game();
+
+        game.add("Nando");
+
+        Assert.Pass();
+    }
 }
