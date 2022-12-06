@@ -53,13 +53,67 @@ public class GameTests
         Assert.Pass();
     }
 
-    [Test(Description = "Ci Devono Essere Almeno 2 Giocatori")]
-    public void CiDevonoEssereAlmeno2Giocatori()
+    [Test(Description = "Non si può giocare con un solo giocatore")]
+    public void NonSiPuoGiocareConUnSoloGiocatore()
     {
+        var stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+
+       var expected = @"Nando was added
+They are player number 1
+Can not play with a single player
+";
         var game = new Game();
 
         game.add("Nando");
+        game.roll(1);
 
-        Assert.Pass();
+        var actual = stringWriter.ToString();
+        Assert.AreEqual(expected, actual);
+    }
+
+    [Test(Description = "Se Vai In Prigione Ci Rimani Per Sempre")]
+    public void SeVaiInPrigioneCiRimaniPerSempre()
+    {
+        var stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+
+        var expected = @"Pippo was added
+They are player number 1
+Pluto was added
+They are player number 2
+Pippo is the current player
+They have rolled a 1
+Pippo's new location is 1
+The category is Science
+Science Question 0
+Question was incorrectly answered
+Pippo was sent to the penalty box
+";
+
+        var game = new Game();
+
+        game.add("Pippo");
+        game.add("Pluto");
+
+        //primo turno 1 - Pippo SBAGLIA
+        game.roll(1);
+        game.wrongAnswer();
+
+        var actual = stringWriter.ToString();
+        Assert.AreEqual(expected, actual);
+
+        //secondo turno 1- Pluto CORRETTO
+        game.roll(1);
+        game.wasCorrectlyAnswered();
+
+
+        //secondo turno 3- Pippo
+        game.roll(1);
+        game.wasCorrectlyAnswered();
+
+
+
+        Assert.AreEqual(expected, actual);
     }
 }

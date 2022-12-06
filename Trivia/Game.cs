@@ -66,6 +66,12 @@ namespace UglyTrivia
 
         public void roll(int roll)
         {
+            if (this.howManyPlayers() == 1)
+            {
+                Console.WriteLine("Can not play with a single player");
+                return;
+            }
+
             Console.WriteLine(players[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
