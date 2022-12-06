@@ -1,0 +1,21 @@
+﻿Pippo was added
+They are player number 1
+Pluto was added
+They are player number 2
+Pippo is the current player
+They have rolled a 1
+Pippo's new location is 1
+The category is Science
+Science Question 0
+Question was incorrectly answered
+Pippo was sent to the penalty box
+Pluto is the current player
+They have rolled a 1
+Pluto's new location is 1
+The category is Science
+Science Question 1
+Answer was corrent!!!!
+Pluto now has 1 Gold Coins.
+Pippo is the current player
+They have rolled a 2
+Pippo is not getting out of the penalty box

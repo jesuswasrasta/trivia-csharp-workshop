@@ -1,7 +1,12 @@
 namespace Trivia.Tests;
 
+using global::ApprovalTests;
+using global::ApprovalTests.Namers;
+using global::ApprovalTests.Reporters;
 using UglyTrivia;
 
+[UseApprovalSubdirectory("Approvals")]
+[TestFixture]
 public class GameTests
 {
     [SetUp]
@@ -72,24 +77,11 @@ Can not play with a single player
         Assert.AreEqual(expected, actual);
     }
 
-    [Test(Description = "Se Vai In Prigione Ci Rimani Per Sempre")]
-    public void SeVaiInPrigioneCiRimaniPerSempre()
+    [Test(Description = "Se Vai In Prigione Ci Rimani finchè non esce un numero dispari")]
+    public void SeVaiInPrigioneCiRimaniFincheNonEsceUnNUmeroDispari()
     {
         var stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
-
-        var expected = @"Pippo was added
-They are player number 1
-Pluto was added
-They are player number 2
-Pippo is the current player
-They have rolled a 1
-Pippo's new location is 1
-The category is Science
-Science Question 0
-Question was incorrectly answered
-Pippo was sent to the penalty box
-";
 
         var game = new Game();
 
@@ -100,8 +92,35 @@ Pippo was sent to the penalty box
         game.roll(1);
         game.wrongAnswer();
 
-        var actual = stringWriter.ToString();
-        Assert.AreEqual(expected, actual);
+        //secondo turno 1- Pluto CORRETTO
+        game.roll(1);
+        game.wasCorrectlyAnswered();
+
+
+        //secondo turno 3- Pippo
+        game.roll(2);
+        game.wasCorrectlyAnswered();
+
+        var isInPenalityBox = stringWriter.ToString().Contains("Pippo is not getting out of the penalty box");
+
+        Assert.That(isInPenalityBox, Is.True);
+    }
+
+    [Test(Description = "Se Vai In Prigione Ci Rimani finchè non esce un numero dispari")]
+    [UseReporter(typeof(QuietReporter))]
+    public void TestPenalityBoxEven()
+    {
+        var stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+
+        var game = new Game();
+
+        game.add("Pippo");
+        game.add("Pluto");
+
+        //primo turno 1 - Pippo SBAGLIA
+        game.roll(1);
+        game.wrongAnswer();
 
         //secondo turno 1- Pluto CORRETTO
         game.roll(1);
@@ -109,11 +128,39 @@ Pippo was sent to the penalty box
 
 
         //secondo turno 3- Pippo
+        game.roll(2);
+        game.wasCorrectlyAnswered();
+
+
+        Approvals.Verify(stringWriter.ToString());
+    }
+
+    [Test(Description = "Se Vai In Prigione Ci Rimani finchè non esce un numero dispari")]
+    [UseReporter(typeof(QuietReporter))]
+    public void TestPenalityBoxOdd()
+    {
+        var stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+
+        var game = new Game();
+
+        game.add("Pippo");
+        game.add("Pluto");
+
+        //primo turno 1 - Pippo SBAGLIA
+        game.roll(1);
+        game.wrongAnswer();
+
+        //secondo turno 1- Pluto CORRETTO
         game.roll(1);
         game.wasCorrectlyAnswered();
 
 
+        //secondo turno 3- Pippo
+        game.roll(3);
+        game.wasCorrectlyAnswered();
 
-        Assert.AreEqual(expected, actual);
+
+        Approvals.Verify(stringWriter.ToString());
     }
 }
