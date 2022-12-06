@@ -38,8 +38,8 @@ public class GameTests
         Assert.That(actual1 && actual2, Is.True);
     }
 
-    [Test(Description = "Posso aggiungere max 5 giocatori")]
-    public void PossoAggiungereMax5Giocatori()
+    [Test(Description = "Posso aggiungere max 6 giocatori")]
+    public void PossoAggiungereMax6Giocatori()
     {
         var game = new Game();
 
@@ -48,8 +48,8 @@ public class GameTests
         game.add("Nando");
         game.add("Nando");
         game.add("Nando");
+        game.add("Nando");
 
         Assert.Pass();
     }
-
 }
