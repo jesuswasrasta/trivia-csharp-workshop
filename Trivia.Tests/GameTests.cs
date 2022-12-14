@@ -124,4 +124,45 @@ Sports Question 0
         Assert.AreEqual(expected, stringWriter.ToString());
 
     }
+
+    [Test(Description = "Posso avere 6 giocatori")]
+    public void PossoGiocareConSeiGiocatori()
+    {
+        var stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+
+        var game = new Game();
+
+        game.add("Steven1");
+        game.add("Steven2");
+        game.add("Steven3");
+        game.add("Steven4");
+        game.add("Steven5");
+        game.add("Steven6");
+
+        game.roll(6);
+
+        var expected = @"Steven1 was added
+They are player number 1
+Steven2 was added
+They are player number 2
+Steven3 was added
+They are player number 3
+Steven4 was added
+They are player number 4
+Steven5 was added
+They are player number 5
+Steven6 was added
+They are player number 6
+Steven1 is the current player
+They have rolled a 6
+Steven1's new location is 6
+The category is Sports
+Sports Question 0
+";
+
+
+        Assert.AreEqual(expected, stringWriter.ToString());
+
+    }
 }
