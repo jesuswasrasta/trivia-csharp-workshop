@@ -7,10 +7,14 @@ namespace Trivia
 {
     public class GameRunner
     {
-
-        private static bool notAWinner;
-
         public static void Main(String[] args)
+        {
+            Random rand = new Random();
+
+            Play(rand);
+        }
+
+        public static void Play(Random rand)
         {
             Game aGame = new Game();
 
@@ -18,11 +22,9 @@ namespace Trivia
             aGame.add("Pat");
             aGame.add("Sue");
 
-            Random rand = new Random();
 
             do
             {
-
                 aGame.roll(rand.Next(5) + 1);
 
                 if (rand.Next(9) == 7)
@@ -33,14 +35,10 @@ namespace Trivia
                 {
                     notAWinner = aGame.wasCorrectlyAnswered();
                 }
-
-
-
             } while (notAWinner);
-
         }
 
-
+        private static bool notAWinner;
     }
 
 }
