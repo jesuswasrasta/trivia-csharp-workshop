@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,6 +66,12 @@ namespace UglyTrivia
 
         public void roll(int roll)
         {
+            if (players.Count < 2)
+            {
+                Console.WriteLine("Cannot play alone");
+                return;
+            }
+
             Console.WriteLine(players[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 

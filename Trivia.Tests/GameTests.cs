@@ -33,4 +33,51 @@ public class GameTests
         Assert.That(result3, Is.True);
     }
 
+    [Test(Description = "Posso giocare da solo")]
+    public void PossoGiocareDaSolo()
+    {
+        var stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+
+        var game = new Game();
+
+        game.add("Nando");
+
+        game.roll(6);
+
+        var expected = @"Nando was added
+They are player number 1
+Nando is the current player
+They have rolled a 6
+Nando's new location is 6
+The category is Sports
+Sports Question 0
+";
+
+
+        Assert.AreEqual(expected, stringWriter.ToString());
+
+    }
+
+    [Test(Description = "Non posso giocare da solo")]
+    public void NonPossoGiocareDaSolo()
+    {
+        var stringWriter = new StringWriter();
+        Console.SetOut(stringWriter);
+
+        var game = new Game();
+
+        game.add("Nando");
+
+        game.roll(6);
+
+        var expected = @"Nando was added
+They are player number 1
+Cannot play alone
+";
+
+
+        Assert.AreEqual(expected, stringWriter.ToString());
+
+    }
 }
